@@ -9,7 +9,7 @@
 import pandas as pd
 import numpy as np
 #dcg
-def dcg(label,pos): #  这个就不要了，才发现不能做来着
+def dcg(label,pos): #  通过求dcg和idcg来计算ndcg
     dcg = 0
     for i in range(len(label)):
         dcg += (label[i] * np.reciprocal(np.log2(pos[i]+1)))
