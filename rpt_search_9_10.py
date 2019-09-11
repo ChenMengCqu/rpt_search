@@ -42,7 +42,7 @@ def mrr(file):
     label = file['y'].tolist()
     qurry_1_pos={}
     sum = 0
-    #list(v)[0] 返回预测的第一个相关的house在搜索结果中所在位置
+    #list(v)[0] 返回预测的第一个相关的item在搜索结果中所在位置
     for k,v in file_1.groupby('qurry_id')['rank_id']:
         qurry_1_pos[k]= list(v)[0]
         sum += 1 / qurry_1_pos[k]
@@ -64,11 +64,11 @@ def MAP_compare(file):
         qurry_len[k]=len(v)
    #  所有正样本对应的记录
     file_1=file[file['y']==1]
-   #每一个query对应预测的house的排序位置
+   #每一个query对应预测的item的排序位置
     qurry_1_pos={}
     for k,v in file_1.groupby('qurry_id')['rank_pre']:
         qurry_1_pos[k]=list(v)
-    #每个qurry真实的house排序位置
+    #每个qurry真实的item排序位置
     qurry_1_true={}
     for k,v in file_1.groupby('qurry_id')['rank_id']:
         qurry_1_true[k]=list(v)
